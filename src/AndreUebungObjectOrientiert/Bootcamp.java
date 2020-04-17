@@ -17,6 +17,8 @@ import java.util.Arrays;
 public class Bootcamp {
 	
 	/* Klassenvariablen */
+	// mit static gehört er nun zur Klasse
+	static int anzahl = 0;
 	
 	
 	/* Instanzvariablen */
@@ -63,10 +65,12 @@ public class Bootcamp {
 	
 	
 	public Bootcamp(String[] members, String trainer, int week, boolean remote) {
-		this.members = members;
+		this.members = members.clone();
 		this.trainer = trainer.toUpperCase(); // don't repeat; only on one place...
 		this.week = week;
-		this.remote = remote;			
+		this.remote = remote;
+		anzahl++;
+		// oder Bootcamp.anzahl++;
 	}
 	
 	
@@ -76,11 +80,37 @@ public class Bootcamp {
 	public String[] getMembers() {
 		return members;
 	}
-
-
+	
+	
+	
 	public void setMembers(String[] members) {
+		this.members = members.clone(); // auch hier clone (Sicherheit): ==> Immer wenn ich von außen etwas bekommen, was ein Referenz-Tpy ist, 
+										// gerade bei Feldern, sollte ich darüber nachdenken, ob ich noch einmal clone, damit das Feld nicht nachträglich
+										// manipuliert werden kann.
+		
+										// Problem bei übergabe von GANZEM F E L D !!!
+	}
+	
+	
+//==============================================================================================================>>>
+	// nachträglich einen member dazufügen: Arrays können nicht erweitert werden...
+	public void setMembers(String member) {
+		// 1) neues Feld mit Länge um eins länger
+		String[] members = new String[this.members.length +1];
+		
+		// 2) bisherige Werte rüberschieben
+		for (int i = 0; i < this.members.length; i++) {
+			members[i] = this.members[i];
+		}
+		
+		// 3) in das hinterste freie Feld den neuen Wert reinschreiben
+		members[members.length -1] = member;
+		
+		// 4) Referenz umlegen
 		this.members = members;
 	}
+	// bei Array-List hat sich das aber erledigt...
+//==============================================================================================================>>>
 
 
 	public String getTrainer() {
@@ -146,8 +176,17 @@ public class Bootcamp {
 		
 	}
 	
+	/*
+	public static void main(String[] args) {
+		System.out.println(Bootcamp.anzahl); // ohne Bootcamp schaut er nach: Gibt es eine Instanzvariable mit dem Namen anzahl? Sonst nimmt er die Klassenvarible...
+		Bootcamp b1 = new Bootcamp();
+		System.out.println(anzahl);
+		Bootcamp b2 = new Bootcamp();
+		System.out.println(anzahl);
+	}
+	*/
 	
-	// =============================================================> 1:05
+	
 	
 	
 
