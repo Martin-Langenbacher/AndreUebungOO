@@ -40,7 +40,15 @@ public class Testprogramm {
 		darmstadt.setRemote(false);
 		System.out.println(darmstadt.isRemote());
 		
+		// Aufruf von einer Methode in einer anderen Klasse:
+		// 1) von einer Klasse
+		// Name der Klasse und dann Methode!
+		Bootcamp.main(members);
 		
+		
+		// 2) von einem Objekt
+		// a) Objekt von Klasse Bootcamp und dann kann man die Methode aufrufen.
+		bonn.foo();
 		
 		
 	}
