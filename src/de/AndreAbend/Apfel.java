@@ -34,14 +34,8 @@ public class Apfel extends Obst {
 			System.out.println("Bähh");
 		} else {
 			System.out.println("Lecker");
-		}
-		
+		}		
 	}
 
-
-
-
-	
-	
 	
 }

@@ -12,6 +12,9 @@ public class Testprogramm {
 		Obst obst1 = new Apfel("Lila");
 		Essbar obst3 = new Apfel("Orange");
 		
+		Essbar obst4 = new Boskop("Braun");
+		
+		
 		
 		Apfel a = new Apfel("Rot");
 		a.hatWurm();
@@ -24,6 +27,9 @@ public class Testprogramm {
 		apfel1.essen();
 		System.out.println("****************************************************************");
 		System.out.println(obst3);
+		obst4.essen();
+		System.out.println(obst4 +" --> Hier kommt die Farbe: " +((Obst) obst4).getFarbe() + "|<<< Fertig");
+				
 		
 	}
 	
