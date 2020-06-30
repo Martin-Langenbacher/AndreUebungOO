@@ -15,3 +15,4 @@ public class TrimSort1Extern {
 	}
 
 }
+// trim löscht "\n" (Zeilenumbruch) und "\t" (Tabulator)

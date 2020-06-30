@@ -33,4 +33,5 @@ public class TrimSort2Inner {
 }
 
 
-
+// um an die innere Klasse heranzukommen müssen wir das Objekt erzeugen: "new TrimSort2Inner().new TrimmingComparator() 
+// --> es braucht immer ein Objekt um an die innere Klasser heranzukommen!

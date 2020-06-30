@@ -1,6 +1,7 @@
 package Lambda;
 
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 public class Greetings {
 
@@ -25,17 +26,29 @@ public class Greetings {
 		
 		// Lambda-Ausdruck mit genau einem Parameter
 		System.out.println("Beispiel 4: ");
-		Greetable3 g3 = s -> System.out.println(s);
+		Greetable3 g3 = s -> System.out.println(s); // da man nur einen Parameter hat kann man (s) weglassen, aber auch (String s) weglassen!
 		g3.greet("Alaaf ");
 		
 		
 		// Lambda-Ausdruck bei forEach-Schleife
-		System.out.println("Beispiel 5: ");
+		System.out.println("Beispiel 5a: ");
 		ArrayList<String> list = new ArrayList<String>();
 		list.add("Alaaf ");
 		list.add("Alaaf ");
 		list.add("Alaaf ");
 		list.forEach( s -> System.out.print(s + " "));
+		
+		// Andre / David:
+		System.out.println("\nBeispiel 5b: ");
+		list.forEach( new Consumer<String>() {
+			
+			@Override
+			public void accept(String t) {
+				
+				System.out.print(t + " ");
+				
+			}
+		});
 
 	}
 
