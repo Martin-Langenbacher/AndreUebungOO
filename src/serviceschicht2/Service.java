@@ -1,35 +1,21 @@
 package serviceschicht2;
 
+import java.util.List;
+
+import serviceschicht2.CommandLineView;
+import serviceschicht2.Entity;
+import serviceschicht2.Repository;
+import serviceschicht2.ViewInterface;
 
 public class Service {
 
 	public void showAllProducts() {
 		
-		ViewInterface view = new CommandLineView();
-		
-		
-		
+		ViewInterface view = new CommandLineView();  // --> ruft view auf (hier CommandLineView, vom Interface: ViewInterface): ==> PrintProduts
+		Repository model = new Repository();         // --> ruft Repository auf ==> und holt durch getAll alle Daten!
+		List<Entity> products = model.getAll();
+		//List<serviceschicht.Entity> products = model.getAll();
+		view.printProducts(products);
 	}
-
 }
 
-
-/*
-public class Service {
-	
-	// alle Prudukte ausgeben
-	public void showAllProducts(){
-		
-		View view = new ConsoleView();
-		//ConsoleView view = new ConsoleView();    // --> Ausgetauscht wegen Interface!
-		//PdfView view = new PdfView();
-		
-		Repository model = new Repository();
-		List<Entity> products = model.getAll();    // besorgt alle Infos, die die View benötigt
-		view.printProducts(products);              // hier werden die products weitergeleitet
-		
-	}
-
-}
-
-*/
