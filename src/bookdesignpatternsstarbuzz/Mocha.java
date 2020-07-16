@@ -1,7 +1,5 @@
 package bookdesignpatternsstarbuzz;
 
-import bookdesignpatternsstarbuzz.Beverage.Size;
-
 public class Mocha extends CondimentDecorator{
 	//Beverage beverage;
 	
@@ -18,7 +16,6 @@ public class Mocha extends CondimentDecorator{
 	
 		
 	public double cost() {
-		//System.out.println(beverage.getSize() + "=====================================================");
 		double cost = beverage.cost();
 		if (beverage.getSize() == Size.TALL) {
 			cost += .20;
