@@ -3,6 +3,7 @@ package bookdesignpatternswetherstation;
 import java.util.Observable;
 import java.util.Observer;
 
+/*
 public class StatisticDisplay implements Observer, DisplayElement {
 	private float maxTemp = 0.0f;
 	private float minTemp = 200;
@@ -13,6 +14,7 @@ public class StatisticDisplay implements Observer, DisplayElement {
 		observable.addObserver(this);
 	}
 
+	
 	public void update(Observable observable, Object arg) {
 		if (observable instanceof WeatherData) {
 			WeatherData weatherData = (WeatherData)observable;
@@ -31,12 +33,17 @@ public class StatisticDisplay implements Observer, DisplayElement {
 			display();
 		}
 	}
+	
 
 	public void display() {
 		System.out.println("Avg/Max/Min temperature = " + (tempSum / numReadings)
 			+ "/" + maxTemp + "/" + minTemp);
 	}
 }
+*/
+
+
+
 
 // Outdated - I did not continue with it - but some additional Code:
 

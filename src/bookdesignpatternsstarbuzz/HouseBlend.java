@@ -1,5 +1,7 @@
 package bookdesignpatternsstarbuzz;
 
+import bookdesignpatternsstarbuzz.Beverage.Size;
+
 public class HouseBlend extends Beverage {
 	
 	public HouseBlend() {

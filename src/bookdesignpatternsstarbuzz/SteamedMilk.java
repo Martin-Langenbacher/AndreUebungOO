@@ -1,23 +1,21 @@
 package bookdesignpatternsstarbuzz;
 
-public class Whip extends CondimentDecorator{
+public class SteamedMilk extends CondimentDecorator{
 	//Beverage beverage;
 
-	public Whip(Beverage beverage) {
-		super();
+	public SteamedMilk(Beverage beverage) {
 		this.beverage = beverage;
 	}
 
-	
 	@Override
 	public String getDescription() {
-		return beverage.getDescription() + ", Whip";
+		return beverage.getDescription() + ", Steamed Milk";
 	}
 
-	
 	@Override
 	public double cost() {
-		return beverage.cost() + .10;
+		return beverage.cost() + .11;
 	}
 
 }
+
