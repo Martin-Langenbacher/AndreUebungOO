@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class Comparator {
+public class ComparatorNew {
 	
 public static void main(String[] args) {
 		
