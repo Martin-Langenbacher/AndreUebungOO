@@ -40,9 +40,9 @@ public class DuckSortTestDrive {
 		// <<<============================================================================================================ Mit André !!!!!!!!!!!
 		// ==========================================================================>>> MartinDuck... FUNKTIONIERT !!!
 		System.out.println("\nSorting from Letters...");
-		Arrays.sort(ducks2, DuckString.DuckStringComparator);
+		//Arrays.sort(ducks2, DuckString.DuckStringComparator);
 		// Arrays.sort(fruits, Fruit.FruitNameComparator); // --> by name
-		//Arrays.sort(ducks2);
+		Arrays.sort(ducks2);
 		display(ducks2);
 		}
 	
