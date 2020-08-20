@@ -3,6 +3,18 @@ package bookdesignpatternswetherstation;
 import java.util.Observable;
 import java.util.Observer;
 
+
+
+/*
+Deprecated. 
+This class and the Observer interface have been deprecated. The event model supported by Observer and Observable is quite limited, the order of notifications delivered by Observable is unspecified,
+and state changes are not in one-for-one correspondence with notifications. For a richer event model, consider using the java.beans package. For reliable and ordered messaging among threads, consider
+using one of the concurrent data structures in the java.util.concurrent package. For reactive streams style programming, see the Flow API.
+Link: 
+https://docs.oracle.com/javase/9/docs/api/java/util/Observable.html
+*/
+
+
 /*
 public class StatisticDisplay implements Observer, DisplayElement {
 	private float maxTemp = 0.0f;
