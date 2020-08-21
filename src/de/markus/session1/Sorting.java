@@ -16,16 +16,19 @@ public class Sorting {
 	public String text = "Sorter";
 
 	public static void main(String[] args) {
-		List<String> items = Arrays.asList("Martin", "Bert", "Yeti", "Andi", "Markus", "Harald");
+		List<String> items = Arrays.asList("Martin", "Bert", "Yeti", "Andi", "Markus", "Harald", "Li", "Ines-Langname");
 		System.out.println("Before: " + items);
 		// sort is a static method of class Collections
 
 		// "normal" class
 		Collections.sort(items, new StandardComparator());
+		System.out.print("After: " + items);
+		System.out.println(" ==> Alphabetische Reihenfolge: ");
 
 		// static inner class
 		Collections.sort(items, new InnerComparator1());
-
+		System.out.println("===============>>>-----> Weitere Sorts dazwischen, die nicht ausgegeben werden !!! <-----<<<===============");
+		
 		// non-static inner class (this is not allowed in static methods!!!)
 		// Collections.sort(items, new InnerComparator2());
 
@@ -87,7 +90,8 @@ public class Sorting {
 			}
 		});
 
-		System.out.println("After: " + items);
+		System.out.print("After: " + items);
+		System.out.println("==> Nach Länge sortiert !!!");
 	}
 
 	public void doSomething() {
