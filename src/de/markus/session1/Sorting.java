@@ -44,7 +44,7 @@ public class Sorting {
 		// advantage: briefest way
 		// disadvantage: can not be re-used
 		// disadvantage: has no describing name
-		Collections.sort(items, new Comparator<String> () {					
+		Collections.sort(items, new Comparator<String> () {				// --> here is the anonymous class !				
 			@Override
 			public int compare(String s1, String s2) {
 				if (s1.length() > s2.length()) {
