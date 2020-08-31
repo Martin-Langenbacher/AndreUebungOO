@@ -6,17 +6,35 @@ public class QuestionCode3 {
 
 	public static void main(String[] args) {
 		
+		A.B myAB = new A.B() {
+			
+			@Override
+			public void b() {
+				System.out.println("Hier bin ich in A.B");
+			}
+		};
+		//myAB.b();
+		myAB.c();
+		
+		// annonyme implementierung einer inner Class: Die Klasse hat keinen NAME - im gegensatz zu MyAD!
+		new A.D() {
+			
+			@Override
+			void b() {
+				System.out.println("Hier bin ich in A.D");
+				
+			}
+		}.c();
+		// ab new ... bis .c() geht die anonyme Klasse.
+		
+		
+		
+		
+		// . ich rufe auf einer Instanz A.D eine Methode auf.
+		
 		
 		/*
 		
-		// Konstruktor-Aufruf? Wann kann ich dies tun? Mit einem Builder?
-		
-		mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addApi(Wearable.API)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .build();
-        mGoogleApiClient.connect();
 		
 		
 		
