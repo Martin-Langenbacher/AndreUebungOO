@@ -9,14 +9,9 @@ public class QuestionCode4 {
 		
 		
 
-		
-		
-
 	}
 
 }
-
-
 
 
 
