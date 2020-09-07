@@ -38,4 +38,10 @@ Unterschied zwischen Instanz und Objekt?
   - Thread handling
 
 
+- Validation:
+https://www.baeldung.com/javax-validation
+https://sterl.org/2015/06/java-jsr-validation-for-dates/
+
+
+
 */
