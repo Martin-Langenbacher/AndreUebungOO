@@ -1,0 +1,47 @@
+package de.kopfBisFuss.chapter11;
+
+public class RainerUndMonikaJob implements Runnable {
+	
+	private BankKonto konto = new BankKonto();
+
+	public static void main(String[] args) {
+		RainerUndMonikaJob derJob = new RainerUndMonikaJob();
+		Thread eins = new Thread(derJob);
+		Thread zwei = new Thread(derJob);
+		eins.setName("Rainer");
+		zwei.setName("Monika");
+		eins.start();
+		zwei.start();
+	}
+
+	
+	public void run() {
+		for (int i = 0; i < 10; i++) {
+			abhebungMachen(10);
+			if (konto.getKontostand() < 0) {
+				System.out.println("Überzogen!");	
+			}	
+		}
+	}
+
+
+	private synchronized void abhebungMachen(int betrag) {
+		if (konto.getKontostand() >= betrag) {
+			System.out.println(Thread.currentThread().getName() + " ist im Begriff abzuheben.");
+			try {
+				System.out.println(Thread.currentThread().getName() + " schälft ein.");
+				Thread.sleep(500);
+			} catch (InterruptedException ex) {
+				ex.printStackTrace();
+			}
+			System.out.println(Thread.currentThread().getName() + " ist aufgewacht.");
+			konto.abbuchen(betrag);
+			System.out.println(Thread.currentThread().getName() + " führt die Abhebung zu Ende.");	
+		}
+		else {
+			System.out.println("Leider nicht genug Geld für " + Thread.currentThread().getName());
+		}
+		
+	}
+
+}

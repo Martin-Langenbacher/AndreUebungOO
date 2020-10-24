@@ -3,11 +3,15 @@ package de.kopfBisFuss.chapter11;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.Label;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.sound.midi.MidiEvent;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.Sequence;
 import javax.sound.midi.Sequencer;
+import javax.sound.midi.ShortMessage;
 import javax.sound.midi.Track;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -16,6 +20,8 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import org.w3c.dom.events.EventException;
 
 public class BeatBox {
 	
@@ -85,6 +91,7 @@ public class BeatBox {
 			JCheckBox c = new JCheckBox();
 			c.setSelected(false);
 			checkboxListe.add(c);
+			hauptPanel.add(c);
 		} // Ende der Schleife: Kontrollkästchen ....
 		
 		midiEinrichten();
@@ -92,7 +99,7 @@ public class BeatBox {
 		derFrame.setBounds(50,  50,  300,  300);
 		derFrame.pack();
 		derFrame.setVisible(true);
-	} // Methode schließen
+	} // Methode gui-Erstellen schließen
 
 
 	public void midiEinrichten() {
@@ -118,11 +125,90 @@ public class BeatBox {
 		track = sequence.createTrack();
 		
 		for (int i = 0; i < 16; i++) {
-			// trackListe --> HIER geht es weiter: Buch Seite 422 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			trackListe = new int[16];
 			
+			int taste = instrumente[i];
+			
+			for (int j = 0; j < 16; j++) {
+				JCheckBox jc = checkboxListe.get(j + (16*i));
+				if (jc.isSelected()) {
+					trackListe[j] = taste;
+				} else {
+					trackListe[j] = 0;
+				}
+			} // Ende der inneren Schleife
+			
+			tracksErzeugen(trackListe);
+		} // Ende der äußeren Schleife
+		
+		track.add(eventErzeugen(192, 9, 1, 0, 16));
+		try {
+			sequencer.setSequence(sequence);
+			sequencer.setLoopCount(Sequencer.LOOP_CONTINUOUSLY);
+			sequencer.start();
+			sequencer.setTempoFactor(120);
+		} catch (Exception e) { e.printStackTrace(); }
+	} // Methode trackErstellenUndStarten schließen
+	
+	
+	public class MeinStartListener implements ActionListener {
+		public void actionPerformed(ActionEvent a) {
+			trackErstellenUndStarten();
+		}
+	} // innere Klasse schließen
+	
+	
+	public class MeinStoppListener implements ActionListener {
+		public void actionPerformed(ActionEvent a) {
+			sequencer.stop();
+		}
+	} // innere Klasse schließen
+	
+	
+	public class MeinSchnellerListener implements ActionListener {
+		public void actionPerformed(ActionEvent a) {
+			float tempoFactor = sequencer.getTempoFactor();
+			sequencer.setTempoFactor((float) (tempoFactor * 1.03));
+		}
+	} // innere Klasse schließen
+	
+	
+	public class MeinLangsamerListener implements ActionListener {
+		public void actionPerformed(ActionEvent a) {
+			float tempoFactor = sequencer.getTempoFactor();
+			sequencer.setTempoFactor((float) (tempoFactor * .97));
+		}
+	} // innere Klasse schließen
+	
+	
+	
+	public void tracksErzeugen(int[] liste) {
+		
+		for (int i = 0; i < 16; i++) {
+			int taste = liste[i];
+			
+			if (taste != 0) {
+				track.add(eventErzeugen (144, 9, taste, 100, i));
+				track.add(eventErzeugen (128, 9, taste, 100, i+1));
+			}
 		}
 	}
-	
 
 
-}
+	public MidiEvent eventErzeugen(int comd, int chan, int one, int two, int tick) {
+		MidiEvent event = null;
+		try {
+			ShortMessage a= new ShortMessage();
+			a.setMessage(comd, chan, one, two);
+			event = new MidiEvent(a, tick);
+			
+		} catch (Exception e) { e.printStackTrace(); }
+		return event;
+	}
+
+} // Klasse schließen
+
+
+
+
+
